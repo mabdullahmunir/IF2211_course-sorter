@@ -142,5 +142,30 @@ namespace coursesorter
             return TopSortBFS(sortedNode);
         }
 
+        public List<List<int>> SemesterSort(ArrayList sortedNode) {
+            List<List<int>> semester = new List<List<int>>;
+            semester.Add(new List<int>);
+            int smt, smtDep, maxSmt;
+            // For each sorted node
+            foreach(int node in sortedNode) {
+                smt = 0;
+                maxSmt = semester.Count - 1;
+                // For each dependencies
+                for (int i = 0; i < adjMatx.GetLength(0); ++i) {
+                    if (adjMatx[i, node]) {
+                        // Get its semester
+                        smtDep = maxSmt;
+                        while (!semester[smtDep].Contains(i) & i >= 0) --smtDep;
+                        ++smtDep; // Where node should be in
+                        // Check if it's the latest dependencies
+                        if (smtDep > smt) smt = smtDep;
+                    }
+                }
+                if (smt == maxSmt + 1) semester.Add(new List<int>);
+                semester[smt].Add(node);
+            }
+            return semester;
+        }
+
     }
 }
