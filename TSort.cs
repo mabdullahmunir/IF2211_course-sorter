@@ -127,13 +127,8 @@ namespace coursesorter
         }
 
         public List<List<int>> SemesterSort(ArrayList sortedNode) {
-<<<<<<< HEAD
             List<List<int>> semester = new List<List<int>>();
             semester.Add(new List<int>());
-=======
-            List<List<int>> semester = new List<List<int>>;
-            semester.Add(new List<int>);
->>>>>>> 9938ab42f5cb5bb10596dcfb459b5593d33e01d9
             int smt, smtDep, maxSmt;
             // For each sorted node
             foreach(int node in sortedNode) {
@@ -150,11 +145,7 @@ namespace coursesorter
                         if (smtDep > smt) smt = smtDep;
                     }
                 }
-<<<<<<< HEAD
                 if (smt == maxSmt + 1) semester.Add(new List<int>());
-=======
-                if (smt == maxSmt + 1) semester.Add(new List<int>);
->>>>>>> 9938ab42f5cb5bb10596dcfb459b5593d33e01d9
                 semester[smt].Add(node);
             }
             return semester;
