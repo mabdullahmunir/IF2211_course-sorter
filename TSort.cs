@@ -7,30 +7,12 @@ namespace coursesorter
 {
     class TSort
     {
-        public List<string> message
-        {
-            get; set;
-        }
-        public List<Image> img
-        {
-            get; set;
-        }
-        public int c
-        {
-            get; set;
-        }
-        public string[] timestamp
-        {
-            get; set;
-        }
-        public string[] nodename
-        {
-            get; set;
-        }
-        public bool[,] adjMatx
-        {
-            get; set;
-        }
+        public List<string> message;
+        public List<Image> img;
+        public int c;
+        public string[] timestamp;
+        public string[] nodename;
+        public bool[,] adjMatx;
         public bool status;
 
         public TSort(string filename)
@@ -84,6 +66,7 @@ namespace coursesorter
         {
             c++;
             timestamp[x] += c.ToString() + " ";
+            message.Add("Entering Node " + nodename[x] + "\n");
             img.Add(Graphviz.RenderImage(Utility.format1(adjMatx, timestamp, nodename), "jpg"));
             // For every child, reccursively call the algorithm, if the child hasn't been sorted
             for (int j = 0; j < adjMatx.GetLength(1); ++j)
@@ -95,6 +78,7 @@ namespace coursesorter
             }
             c++;
             timestamp[x] += c.ToString() + " ";
+            message.Add("Leaving Node "+nodename[x]+"\n");
             img.Add(Graphviz.RenderImage(Utility.format1(adjMatx, timestamp, nodename), "jpg"));
             // Insert it to the beginning of the list
             sortedNode.Insert(0, x);
@@ -140,6 +124,31 @@ namespace coursesorter
             img.Add(Graphviz.RenderImage(Utility.format2(adjMatx, sortedNode, nodename), "jpg"));
             // reccursively call
             return TopSortBFS(sortedNode);
+        }
+
+        public List<List<int>> SemesterSort(ArrayList sortedNode) {
+            List<List<int>> semester = new List<List<int>>();
+            semester.Add(new List<int>());
+            int smt, smtDep, maxSmt;
+            // For each sorted node
+            foreach(int node in sortedNode) {
+                smt = 0;
+                maxSmt = semester.Count - 1;
+                // For each dependencies
+                for (int i = 0; i < adjMatx.GetLength(0); ++i) {
+                    if (adjMatx[i, node]) {
+                        // Get its semester
+                        smtDep = maxSmt;
+                        while (!semester[smtDep].Contains(i) & i >= 0) --smtDep;
+                        ++smtDep; // Where node should be in
+                        // Check if it's the latest dependencies
+                        if (smtDep > smt) smt = smtDep;
+                    }
+                }
+                if (smt == maxSmt + 1) semester.Add(new List<int>());
+                semester[smt].Add(node);
+            }
+            return semester;
         }
 
     }

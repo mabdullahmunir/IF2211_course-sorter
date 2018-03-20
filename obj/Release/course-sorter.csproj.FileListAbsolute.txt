@@ -35,3 +35,4 @@ E:\Kuliah\Semester 4\Stima\Tubes 2\Checker\Checker\obj\Release\Checker.Propertie
 E:\Kuliah\Semester 4\Stima\Tubes 2\Checker\Checker\obj\Release\course-sorter.csproj.GenerateResource.Cache
 E:\Kuliah\Semester 4\Stima\Tubes 2\Checker\Checker\obj\Release\Checker.exe
 E:\Kuliah\Semester 4\Stima\Tubes 2\Checker\Checker\obj\Release\Checker.pdb
+E:\Kuliah\Semester 4\Stima\Tubes 2\Checker\Checker\obj\Release\course-sorter.csprojResolveAssemblyReference.cache

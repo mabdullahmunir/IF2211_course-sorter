@@ -38,10 +38,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_bfs = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.prev_button = new System.Windows.Forms.Button();
             this.next_button = new System.Windows.Forms.Button();
             this.play_button = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -72,18 +76,22 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBox1.Location = new System.Drawing.Point(5, 26);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(290, 390);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(290, 210);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(314, 26);
+            this.panel1.Location = new System.Drawing.Point(348, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(331, 568);
+            this.panel1.Size = new System.Drawing.Size(410, 410);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
@@ -91,9 +99,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(17, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(311, 562);
+            this.pictureBox1.Size = new System.Drawing.Size(398, 398);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -122,20 +130,10 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(103, -3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // prev_button
             // 
             this.prev_button.Enabled = false;
-            this.prev_button.Location = new System.Drawing.Point(391, 600);
+            this.prev_button.Location = new System.Drawing.Point(482, 443);
             this.prev_button.Name = "prev_button";
             this.prev_button.Size = new System.Drawing.Size(35, 23);
             this.prev_button.TabIndex = 12;
@@ -146,7 +144,7 @@
             // next_button
             // 
             this.next_button.Enabled = false;
-            this.next_button.Location = new System.Drawing.Point(513, 600);
+            this.next_button.Location = new System.Drawing.Point(604, 443);
             this.next_button.Name = "next_button";
             this.next_button.Size = new System.Drawing.Size(27, 23);
             this.next_button.TabIndex = 13;
@@ -157,7 +155,7 @@
             // play_button
             // 
             this.play_button.Enabled = false;
-            this.play_button.Location = new System.Drawing.Point(432, 600);
+            this.play_button.Location = new System.Drawing.Point(523, 443);
             this.play_button.Name = "play_button";
             this.play_button.Size = new System.Drawing.Size(75, 23);
             this.play_button.TabIndex = 14;
@@ -165,23 +163,74 @@
             this.play_button.UseVisualStyleBackColor = true;
             this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1, 460);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "File now :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(48, 461);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 17;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(301, 213);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "<<";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 242);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Course Tree :";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(8, 259);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(287, 157);
+            this.treeView1.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 645);
+            this.ClientSize = new System.Drawing.Size(765, 479);
+            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.play_button);
             this.Controls.Add(this.next_button);
             this.Controls.Add(this.prev_button);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_bfs);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button_open);
             this.Controls.Add(this.button_dfs);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Course Sorter";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -198,11 +247,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_bfs;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button prev_button;
         private System.Windows.Forms.Button next_button;
         private System.Windows.Forms.Button play_button;
-        public System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 

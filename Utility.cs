@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +11,9 @@ namespace coursesorter
         public static string format1(bool[,] adj, string[] lbl, string[] nname)
         {
             StringBuilder s = new StringBuilder();
-            s.Append("digraph g\n{\nforcelabels=true;\nsize=\"4,4\";\nrankdir=\"LR\";\n");
+            s.Append("digraph g\n{\nforcelabels=true;\nsize=\"4,4\";\n");
+            s.Append("graph [autosize=true, size=\"4\", resolution=100];\n");
+            s.Append("node[shape = circle, width = 0.2];\n");
             for (int i=0; i<nname.Length; i++)
             {
                 string trimmed = "";
@@ -23,7 +24,7 @@ namespace coursesorter
                 if ((len == 1) && (!trimmed.Equals("")))
                     s.Append("color=red");
                 else if (len == 2)
-                    s.Append("color=blue");
+                    s.Append("color=green");
                 s.Append("];\n");
             }
             for (int i=0; i<nname.Length; i++)
@@ -45,11 +46,13 @@ namespace coursesorter
         {
             StringBuilder s = new StringBuilder();
             s.Append("digraph g\n{\nforcelabels=true;\nsize=\"4,4\"\nrankdir=\"LR\";\n");
+            s.Append("graph [autosize=true, size=\"4\", resolution=100];\n");
+            s.Append("node[shape = circle, width = 0.2];\n");
             for (int i = 0; i < nname.Length; i++)
             {
                 s.Append(nname[i] + "[style=filled,");
                 if (sortednode.Contains(i))
-                    s.Append("color=blue");
+                    s.Append("color=green");
                 s.Append("];\n");
             }
             for (int i = 0; i < nname.Length; i++)
